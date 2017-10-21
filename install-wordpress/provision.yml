@@ -1,0 +1,16 @@
+---
+
+- hosts: dynamic_host
+  become: yes
+  become_user: root
+  become_method: sudo
+  roles:
+  - vars/load
+  - server/packages
+  - group/add
+  - ssh/allow_passwd
+  - nginx/install
+  - php/install
+  - nginx/config
+  - mysql/install
+  - wp/downloadandtar

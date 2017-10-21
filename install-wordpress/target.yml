@@ -1,0 +1,18 @@
+---
+
+- hosts: localhost
+  tasks:
+  - set_fact: hostname="{{hostname}}"
+  - name: Add target host
+    add_host:
+      name: "{{ host }}"
+      groups: dynamic_host
+  vars_prompt:
+  - name: "host"
+    prompt: "Target host"
+    private: no
+  - name: "hostname"
+    prompt: "Input Hostname"
+    private: no
+
+- include: provision.yml

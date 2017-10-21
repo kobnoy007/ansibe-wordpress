@@ -1,0 +1,39 @@
+---
+
+   - name: Set PHP version 5.6
+     set_fact:
+       php_version: 56
+     when: version == 5.6
+
+   - name: Set PHP version 7.0
+     set_fact:
+       php_version: 70
+     when: version == 7.0
+
+   - name: add repo
+     apt_repository:
+       repo: 'ppa:ondrej/php'
+
+   - name: update apt
+     apt:
+       update_cache: yes
+       cache_valid_time: 86400
+
+   - name: Install php
+     apt:
+       name: "{{item}}"
+       state: present
+     with_items:
+     - php{{version}}-fpm
+
+   - name: Install php extension
+     apt:
+       name: "{{item}}"
+       state: present
+     with_items:
+     - php{{version}}-mysql
+
+   - name: run php-fpm on boot
+     service:
+       name: php{{version}}-fpm
+       enabled: yes

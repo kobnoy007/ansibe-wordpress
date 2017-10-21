@@ -1,0 +1,13 @@
+---
+
+- name: Add www-data group
+  group:
+    name: www-data
+    state: present
+
+- name: Add user project name
+  user:
+    name: "{{project_name}}"
+    password: "{{sftp_password}}"
+    group: www-data
+    mode: 750

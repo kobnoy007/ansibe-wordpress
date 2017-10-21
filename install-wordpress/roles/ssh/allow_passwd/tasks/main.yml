@@ -1,0 +1,15 @@
+---
+
+- name: Copy sshd_config
+  copy:
+    src: sshd_config
+    dest: /etc/ssh/sshd_config
+
+- name: Start sshd service
+  service:
+    name: sshd
+    enabled: yes
+    state: started
+
+
+

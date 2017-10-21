@@ -1,0 +1,25 @@
+---
+
+  - name: Download Wordpress Latest Version
+      get_url:
+      url: https://wordpress.org/latest.tar.gz
+      dest: /var/www/html/
+      
+   - name:
+     unarchive:
+       src: /var/www/html/wordpress-4.8.2.tar.gz
+       dest: /var/www/html/
+    		
+   - name:
+     file:
+       path: /var/www/html/wordpress
+       owner: {{project_name}}
+       group: www-data
+       mode: 0770
+
+   - name:
+     file:
+       path: /var/www/html/
+       owner: {{project_name}}
+       group: www-data
+       mode: 0770

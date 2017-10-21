@@ -1,0 +1,4 @@
+---
+
+- name: Load variables
+  include_vars: /root/install-wordpress/{{hostvars['localhost']['project_name']}}.yml
