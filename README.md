@@ -6,7 +6,7 @@ playbook to install wordpress with nginx php mysql environment
 Note !! what to have
  
 1. Server with ansible and git. 
-2. in version beta Need to manaul config mysql
+2. in beta version need to manaul config mysql.
 
 
 ---
